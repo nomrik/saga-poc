@@ -3,12 +3,15 @@ import {connect} from 'react-redux';
 import {homeSelectors, homeActionCreators} from './ducks'
 
 const mapStateToProps = ({home}) => ({
-    count: homeSelectors.getCount(home)
+    count: homeSelectors.getCount(home),
+    animals: homeSelectors.getAnimals(home)
 })
 
 const mapDispatchToProps = (dispatch) => ({
     onIncrement: () => dispatch(homeActionCreators.incrementCount()),
     onDecrement: () => dispatch(homeActionCreators.decrementCount()),
+    onIncrementAsync: () => dispatch(homeActionCreators.incrementCountAsync()),
+    onRequestAnimals: () => dispatch(homeActionCreators.requestAnimals())
 })
 
 const Home = connect(mapStateToProps, mapDispatchToProps)(HomeView);

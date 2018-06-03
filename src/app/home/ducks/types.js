@@ -1,7 +1,13 @@
-const INCREMENT_TYPE = 'home/increment_type';
-const DECREMENT_TYPE = 'home/decrement_type';
+const INCREMENT = 'home/increment';
+const DECREMENT = 'home/decrement';
+const INCREMENT_ASYNC = 'home/increment_async';
+const REQUEST_ANIMALS = 'home/request_animals';
+const LOAD_ANIMALS = 'home/load_animals';
 
 export default {
-    INCREMENT_TYPE,
-    DECREMENT_TYPE
+    INCREMENT,
+    DECREMENT,
+    INCREMENT_ASYNC,
+    REQUEST_ANIMALS,
+    LOAD_ANIMALS
 };
