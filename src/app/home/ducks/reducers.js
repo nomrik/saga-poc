@@ -1,24 +1,32 @@
+/* Reducers for home. Split and then combined and exported as one reducer */
+
 import types from './types';
+import {statusOptions} from './constants';
+import {combineReducers} from 'redux';
 
-const INITIAL_STATE = {
-    count: 0
-};
-
-const homeReducer = (state = INITIAL_STATE, action) => {
+const animalsReducer = (state = [], action) => {
     switch (action.type) {
-        case types.INCREMENT_TYPE:
-            return {
-                ...state, 
-                count: state.count + 1
-            }
-        case types.DECREMENT_TYPE:
-        return {
-            ...state, 
-            count: state.count - 1
-        }
+        case (types.LOAD_ANIMALS):
+            return action.animals;
         default:
             return state;
     }
-};
+}
+
+const statusReducer = (state = '', action) => {
+    switch (action.type) {
+        case types.START_POLLING:
+            return statusOptions.updating;
+        case types.STOP_POLLING:
+            return statusOptions.notUpdating;
+        default:
+            return state;
+    }
+}
+
+const homeReducer = combineReducers({
+    animals: animalsReducer,
+    status: statusReducer
+})
 
 export default homeReducer;
