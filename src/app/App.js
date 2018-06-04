@@ -1,7 +1,10 @@
+/* The app's entry point, including ReactRouter for client-side routing */
+
 import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
+  Redirect,
   Link
 } from 'react-router-dom'
 
@@ -16,7 +19,8 @@ const App = () => (
         <li><Link to="/about">About</Link></li>
       </ul>
 
-      <Route exact path="/" component={Home}/>
+      <Route exact path="/" render={() => <Redirect to="/home" />}/>
+      <Route path="/home" component={Home} />
       <Route path="/about" component={About}/>
     </div>
   </Router>
